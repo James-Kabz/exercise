@@ -1,11 +1,15 @@
 document.addEventListener('DOMContentLoaded', function ()
 {
+
+  //navigation toogle
+
+
     // greeting section 
     const greetingElement = document.getElementById('greeting');
     const currentTime = new Date().getHours();
     if (currentTime > 12) {
         greetingElement.textContent = 'Good Morning';
-    } else if (currentTime < 18) {
+    } else if (currentTime <= 18) {
         greetingElement.textContent = 'Good Afternoon';
     } else {
         greetingElement.textContent = 'Good Evening';
@@ -14,38 +18,23 @@ document.addEventListener('DOMContentLoaded', function ()
     // weather info
     const weatherElement = document.getElementById('weather');
 
-    function updateLocalTime() {
-         const hoursElement = document.querySelector('.time-number[data-time="hours"]');
-         const minutesElement = document.querySelector('.time-number[data-time="minutes"]');
-         const secondsElement = document.querySelector('.time-number[data-time="seconds"]');
 
-            let date = new Date();
-            let hours =date.getHours();
-            let minutes = date.getMinutes();
-            let seconds = date.getSeconds();
+   function updateLocalTime() {
+    const timeElements = document.querySelectorAll('.time-number');
+     const now = new Date();
+    
+     const hours = now.getHours();
+     const minutes = now.getMinutes();
+     const seconds = now.getSeconds();
 
-            //12 hour clock
-            if (hours > 12) {
-                hours = hours - 12;
-            }
-            if (hours == 0) {
-                hours = 12;
-            }
-            if (hours < 10) {
-                hours = "0" + hours;
-            }
-            if (minutes < 10) {
-                minutes = "0" + minutes;
-            }
-            if (seconds < 10) {
-                seconds = "0" + seconds;
-         }
-         hoursElement.textContent = hours;
-         minutesElement.innerHTML = minutes;
-         secondsElement.innerHTML = seconds;
-         setTimeout(currentTime, 1000);
-    };
-    updateLocalTime();
+     timeElements[0].innerHTML = hours;
+     timeElements[1].innerHTML = (minutes < 10) ? '0' + minutes : minutes;
+     timeElements[2].innerHTML = (seconds < 10) ? '0' + seconds : seconds;
+  }
+
+  setInterval(updateLocalTime, 1000);
+
+
  const galleryImages = [
     './assets/gallery/image1.jpg',
     './assets/gallery/image2.jpg',
@@ -113,3 +102,8 @@ document.addEventListener('DOMContentLoaded', function ()
 
   updateProducts('all');
 });
+
+
+
+
+// side bar navigation  
