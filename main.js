@@ -2,7 +2,38 @@ document.addEventListener('DOMContentLoaded', function ()
 {
 
   //navigation toogle
+  var btn = document.getElementById('open-nav-menu');
+  var closeBtn = document.querySelector('#close-nav-menu');
+   var nav = document.querySelector('.wrapper');
 
+  btn.addEventListener('click', function () {
+    if (nav.style.right === '-100%') {
+      nav.style.right = '0%';
+    } else {
+      nav.style.right = '-100%';
+    }
+    closeBtn.addEventListener('click', function () {
+      // Hide the navigation bar
+      nav.style.right = '100%';
+    });
+  });
+
+  // var btn = document.getElementById('open-nav-menu');
+  //   var closeBtn = document.querySelector('#close-nav-menu');
+  //   var nav = document.querySelector('.wrapper');
+    
+  //   btn.addEventListener('click', function () {
+  //     if (nav.style.right === '-100%') {
+  //       nav.style.right = '0%';
+  //     } else {
+  //       nav.style.right = '-100%';
+  //     }
+  // //   });
+    
+  //   closeBtn.addEventListener('click', function () {
+  //     // Hide the navigation bar
+  //     nav.style.right = '-100%';
+  //   });
 
     // greeting section 
     const greetingElement = document.getElementById('greeting');
@@ -101,9 +132,33 @@ document.addEventListener('DOMContentLoaded', function ()
   });
 
   updateProducts('all');
+
+  // weather
+  let weather = document.querySelector("#weather");
+  let temp = document.querySelector("#temp");
+
+        function checkTemp() {
+          initTempOne = 73.4;
+          initTempTwo = 23;
+          
+          if (document.querySelector("#celsius").checked) {
+            let x;
+            x = (initTempOne - 32) / (9/5);
+            temp.innerHTML = x.toFixed(0) + "°C";
+          } else if (document.querySelector("#fahr").checked) {
+            let y;
+            y = (initTempTwo * (9/5)) + 32;
+            temp.innerHTML = y.toFixed(1) + "°F";
+          }
+        }
+
+        setInterval(checkTemp, 1);
 });
 
 
 
 
-// side bar navigation  
+// side bar navigation
+
+
+    
