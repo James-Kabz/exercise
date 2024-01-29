@@ -133,9 +133,9 @@ document.addEventListener('DOMContentLoaded', function ()
 
   updateProducts('all');
 
-  // weather
-  let weather = document.querySelector("#weather");
-  let temp = document.querySelector("#temp");
+
+    let weather = document.querySelector("#weather");
+  let temp = document.querySelector("#weather");
 
         function checkTemp() {
           initTempOne = 73.4;
@@ -145,6 +145,7 @@ document.addEventListener('DOMContentLoaded', function ()
             let x;
             x = (initTempOne - 32) / (9/5);
             temp.innerHTML = x.toFixed(0) + "°C";
+            
           } else if (document.querySelector("#fahr").checked) {
             let y;
             y = (initTempTwo * (9/5)) + 32;
@@ -152,13 +153,15 @@ document.addEventListener('DOMContentLoaded', function ()
           }
         }
 
-        setInterval(checkTemp, 1);
+        setInterval(checkTemp, 1000);
 });
 
+
+
+    
 
 
 
 // side bar navigation
 
 
-    
